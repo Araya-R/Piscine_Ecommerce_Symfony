@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des catégories
+{% endblock %}
+
+{% block main %}
+	<main>
+
+		<article>
+			<h3>
+				{{category.title}}
+			</h3>
+			<p>
+				{{category.description}}
+			</p>
+
+			<p>
+				{{category.createdAt |date ('d/m/Y') }}
+			</p>
+
+			<p>
+				{{category.updatedAt |date ('d/m/Y')}}
+			</p>
+
+		</article>
+
+	</main>
+{% endblock main %}

@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des produits
+{% endblock %}
+
+{% block main %}
+	<main>
+
+		<article>
+			<h3>
+				{{product.title}}
+			</h3>
+			<p>
+				{{product.description}}
+			</p>
+
+			<p>
+				{{product.createdAt |date ('d/m/Y') }}
+			</p>
+
+			<p>
+				{{product.updatedAt |date ('d/m/Y')}}
+			</p>
+
+		</article>
+
+	</main>
+{% endblock main %}
