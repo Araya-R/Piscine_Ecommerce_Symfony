@@ -36,6 +36,16 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    public function __construct($title,$description,$price,$ispublished,$category){
+        $this->title = $title;
+        $this->description= $description;
+        $this->price = $price;
+        $this->category=$category;
+
+        $this->createdAt = new \DateTime();
+        $this->updatedAt= new \DateTime();
+        $this->isPublished = true;
+    }
 
     public function getId(): ?int
     {
