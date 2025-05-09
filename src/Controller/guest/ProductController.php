@@ -13,12 +13,12 @@ class ProductController extends AbstractController{
     #[Route("/products", name:"products")]
     public function DisplayProducts(ProductRepository $productRepository){
        $products =  $productRepository->findby(['isPublished'=> true]);
-        return $this->render('guest/list-products.html.twig', ['products'=>$products]);
+        return $this->render('guest/product/list-products.html.twig', ['products'=>$products]);
     }
 
     #[Route("/detail-product/{id}", name:"detail-product")]
     public function DisplayProduct($id, ProductRepository $productRepository){
         $product=$productRepository->findOneById($id);
-        return $this->render('guest/detail-product.html.twig', ['product'=>$product]);
+        return $this->render('guest/product/detail-product.html.twig', ['product'=>$product]);
     }
 }

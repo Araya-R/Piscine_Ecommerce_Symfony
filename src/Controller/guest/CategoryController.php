@@ -13,12 +13,12 @@ class CategoryController extends AbstractController{
     #[Route("/categories", name:"categories")]
     public function DisplayCategories(CategoryRepository $categoryRepository){
        $categories =  $categoryRepository->findAll();
-        return $this->render('guest/list-categories.html.twig', ['categories'=>$categories]);
+        return $this->render('guest/category/list-categories.html.twig', ['categories'=>$categories]);
     }
 
     #[Route("/detail-category/{id}", name:"detail-category")]
     public function DisplayCategory($id, CategoryRepository $categoryRepository){
         $category=$categoryRepository->findOneById($id);
-        return $this->render('guest/detail-category.html.twig', ['category'=>$category]);
+        return $this->render('guest/category/detail-category.html.twig', ['category'=>$category]);
     }
 }
