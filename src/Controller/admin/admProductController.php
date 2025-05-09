@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class admProductController extends AbstractController
+class AdmProductController extends AbstractController
 {
 
     #[Route('/admin/create-product', name: "admin-create-product")]
@@ -25,10 +25,16 @@ class admProductController extends AbstractController
 
             $categoryId = $request->request->get('category-id');
             $category = $categoryRepository->find($categoryId);
-            $product = new Product($title, $description, $price, $isPublished, $category);
 
-            $entityManager->persist($product);
-            $entityManager->flush();
+            try{
+                $product = new Product($title, $description, $price, $isPublished, $category);
+                $entityManager->persist($product);
+                $entityManager->flush();
+            }catch(\Exception $e){
+                $this->addFlash('error', 'Erreur:' . $e->getMessage() );
+            }
+            
+            
         }
         $categories = $categoryRepository->findAll();
         return $this->render('admin/product/admCreateProduct.html.twig', ['categories' => $categories]);

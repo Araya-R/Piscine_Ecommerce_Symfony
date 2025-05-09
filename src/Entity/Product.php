@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -37,6 +38,11 @@ class Product
     private ?Category $category = null;
 
     public function __construct($title,$description,$price,$ispublished,$category){
+
+        if (strlen($title) < 3 || strlen($title) > 100){
+            throw new Exception("Le titre doit contenir entre 3 et 100 caractères");
+        }
+        
         $this->title = $title;
         $this->description= $description;
         $this->price = $price;

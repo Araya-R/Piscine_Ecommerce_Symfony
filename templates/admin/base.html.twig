@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
+		<title>
+			
+		</title>
+	</head>
+	<body class="container">
+		<header>
+			<h1>Espace Administrateur</h1>
+			<nav>
+				<ul>
+					<li><a href="{{ path ('admin-home') }}">Page d'accueil</a></li>
+					<li><a href="{{ path ('admin-create-product') }}">Créer des produits</a></li>
+				</ul>
+			</nav>
+		</header>
+
+        {% block main %}{% endblock %}
+
+
+	</body>
+</html>

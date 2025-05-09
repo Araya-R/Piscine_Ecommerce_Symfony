@@ -1,7 +1,14 @@
-<main>
+{% extends "admin/base.html.twig" %}
+
+{% block main %}
+	<main>
 
 		<h2>Créer un produit</h2>
 
+		{% for message in app.flashes('error') %}
+			<div class="alert alert-danger">{{ message }}</div>
+		{% endfor %}
+		
 		<form method="POST">
 			<div>
 				<label>Title
@@ -38,3 +45,4 @@
 
 
 	</main>
+{% endblock %}
