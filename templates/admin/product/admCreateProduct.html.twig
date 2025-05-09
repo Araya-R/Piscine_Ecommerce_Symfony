@@ -1,0 +1,40 @@
+<main>
+
+		<h2>Créer un produit</h2>
+
+		<form method="POST">
+			<div>
+				<label>Title
+					<input type="text" name="title">
+				</label>
+			</div>
+
+			<select name="category-id">
+				{% for category in categories %}
+					<option value="{{ category.id }}">{{category.title}}</option>
+				{% endfor %}
+			</select>
+
+			<div>
+				<label>Description
+					<input type="text" name="description">
+				</label>
+			</div>
+
+			<div>
+				<label>Prix
+					<input type="number" name="price">
+				</label>
+			</div>
+
+			<div>
+				<label>Publié?
+					<input type="checkbox" name="published">
+				</label>
+			</div>
+
+			<input type="submit" value="Créer">
+		</form>
+
+
+	</main>
