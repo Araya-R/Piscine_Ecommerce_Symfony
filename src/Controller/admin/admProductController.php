@@ -4,6 +4,7 @@ namespace App\Controller\admin;
 
 use App\Entity\Product;
 use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,9 +35,16 @@ class AdmProductController extends AbstractController
                 $this->addFlash('error', 'Erreur:' . $e->getMessage() );
             }
             
-            
         }
         $categories = $categoryRepository->findAll();
         return $this->render('admin/product/admCreateProduct.html.twig', ['categories' => $categories]);
+    }
+    
+    #[Route('/admin/list-products', name:"admin-list-product")]
+    public function DisplayProducts(ProductRepository $productRepository){
+
+        $products = $productRepository->findAll();
+        return $this->render('admin/product/list-products.html.twig',['products' => $products] );
+
     }
 }
