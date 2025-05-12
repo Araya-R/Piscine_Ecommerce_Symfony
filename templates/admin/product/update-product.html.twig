@@ -1,0 +1,48 @@
+{% extends "admin/base.html.twig" %}
+
+{% block main %}
+	<main>
+
+		<h2>Modifer un produit</h2>
+
+		<form method="POST">
+			<div>
+				<label for="title">Title
+					<input type="text" name="title" value="{{ product.title }}">
+				</label>
+			</div>
+
+			<select name="category-id">
+				{% for category in categories %}
+					{% if category.id == product.category.id  %}
+
+						<option value="{{ category.id }}" selected="selected">{{category.title}}</option>
+
+					{% endif %}
+				{% endfor %}
+			</select>
+
+			<div>
+				<label for="description">Description
+					<input type="text" name="description" value="{{product.description}}">
+				</label>
+			</div>
+
+			<div>
+				<label for="price">Prix
+					<input type="number" name="price" value="{{product.price}}">
+				</label>
+			</div>
+
+			<div>
+				<label for="is-published">Publié?
+					<input type="checkbox" name="published" value="{{product.isPublished}}">
+				</label>
+			</div>
+
+			<button type="submit">Modifier</button>
+		</form>
+
+
+	</main>
+{% endblock %}

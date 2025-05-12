@@ -4,9 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
-		<title>
-			
-		</title>
+		<title></title>
 	</head>
 	<body class="container">
 		<header>
@@ -14,12 +12,23 @@
 			<nav>
 				<ul>
 					<li><a href="{{ path ('admin-home') }}">Page d'accueil</a></li>
+					<li><a href="{{ path ('admin-list-products') }}">Liste des produits</a></li>
+
 					<li><a href="{{ path ('admin-create-product') }}">Créer des produits</a></li>
 				</ul>
 			</nav>
 		</header>
 
-        {% block main %}{% endblock %}
+
+		{% for message in app.flashes('error') %}
+			<div class="alert alert-danger">{{ message }}</div>
+		{% endfor %}
+		
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-danger">{{ message }}</div>
+		{% endfor %}
+
+		{% block main %}{% endblock %}
 
 
 	</body>

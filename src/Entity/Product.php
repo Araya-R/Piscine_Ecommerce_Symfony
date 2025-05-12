@@ -37,7 +37,7 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-    public function __construct($title,$description,$price,$ispublished,$category){
+    public function __construct($title,$description,$price,$isPublished,$category){
 
         if (strlen($title) < 3 || strlen($title) > 100){
             throw new Exception("Le titre doit contenir entre 3 et 100 caractères");
@@ -50,7 +50,24 @@ class Product
 
         $this->createdAt = new \DateTime();
         $this->updatedAt= new \DateTime();
-        $this->isPublished = true;
+        $this->isPublished = $isPublished;
+    }
+
+    public function update($title,$description,$price,$isPublished,$category){
+        if (strlen($title) < 3 || strlen($title) > 100){
+            throw new Exception("Le titre doit contenir entre 3 et 100 caractères");
+        }
+        if ($price < 0){
+            throw new Exception("Le prix doit être un nombre positif");
+        }
+        
+        $this->title = $title;
+        $this->description= $description;
+        $this->price = $price;
+        $this->category=$category;
+
+        $this->updatedAt= new \DateTime();
+        $this->isPublished = $isPublished;
     }
 
     public function getId(): ?int
