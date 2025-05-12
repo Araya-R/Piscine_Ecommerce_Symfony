@@ -76,7 +76,7 @@ class AdmProductController extends AbstractController
             $description = $request->request->get('description');
             $price = $request->request->get('price');
             $isPublished = $request->request->get('published') === 'on' ? true : false;
-            $categoryId = $request->request->get('category-id');
+            $categoryId = $request->request->get('category');
 
             $category = $categoryRepository->find($categoryId);
 
