@@ -85,10 +85,13 @@ class AdmProductController extends AbstractController
             } else try {
 
                 $product->update($title, $description, $price, $isPublished, $category);
+
                 $entityManager->flush();
+
                 $this->addFlash('success', 'Produit mis à jour avec succès');
 
                 return $this->redirectToRoute('admin-list-products');
+                
             } catch (\Exception $e) {
                 $this->addFlash('error', 'Erreur:' . $e->getMessage());
             }

@@ -12,13 +12,11 @@
 				</label>
 			</div>
 
-			<select name="category-id">
+			<select name="category">
 				{% for category in categories %}
-					{% if category.id == product.category.id  %}
-
-						<option value="{{ category.id }}" selected="selected">{{category.title}}</option>
-
-					{% endif %}
+					<option value="{{ category.id }}" {% if category.id == product.category.id %} selected {% endif %}>
+						{{ category.title }}
+					</option>
 				{% endfor %}
 			</select>
 
@@ -36,7 +34,7 @@
 
 			<div>
 				<label for="is-published">Publié?
-					<input type="checkbox" name="published" value="{{product.isPublished}}">
+					<input type="checkbox" name="isPublished" {% if product.isPublished %} checked {% endif %}>
 				</label>
 			</div>
 
