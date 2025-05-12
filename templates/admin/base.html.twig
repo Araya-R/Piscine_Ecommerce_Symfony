@@ -15,15 +15,26 @@
 					<li><a href="{{ path ('admin-list-products') }}">Liste des produits</a></li>
 
 					<li><a href="{{ path ('admin-create-product') }}">Créer des produits</a></li>
+
+					<li><a href="{{path('logout')}}">Se déconnecter</a></li>
 				</ul>
 			</nav>
+			{% if app.user %}
+				<p>Connecté en tant que :
+					<strong>{{ app.user.email}}</strong>
+				</p>
+			{% else %}
+				<p>Vous n'êtes pas connecté.</p>
+			{% endif %}
+
+
 		</header>
 
 
 		{% for message in app.flashes('error') %}
 			<div class="alert alert-danger">{{ message }}</div>
 		{% endfor %}
-		
+
 		{% for message in app.flashes('success') %}
 			<div class="alert alert-danger">{{ message }}</div>
 		{% endfor %}

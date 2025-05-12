@@ -1,0 +1,20 @@
+{% extends "guest/base.html.twig" %}
+
+{% block title %}Login
+{% endblock %}
+
+{% block main %}
+	<main>
+		<h2>Connexion</h2>
+		{% if error %}
+			<div class="alert alert-danger">
+				{{ error.messageKey}}
+			</div>
+		{% endif %}
+		<form method="POST">
+			<input type="email" name="_username" placeholder="Email" required>
+			<input type="password" name="_password" placeholder="Mot de passe" required>
+			<button type="submit">Se connecter</button>
+		</form>
+	</main>
+{% endblock main %}
