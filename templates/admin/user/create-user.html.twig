@@ -1,12 +1,17 @@
 {% extends "admin/base.html.twig" %}
 
-{% block title %}Create Admin
+{% block title %}Create new Admin
 {% endblock %}
 
 {% block main %}
 	<main>
-		<h2>Créer un administrateur</h2>
-		
+		<h2>Créer un nouvel administrateur</h2>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">{{ message }}</div>
+		{% endfor %}
+
+
 		<form method="POST">
 			<input type="email" name="email" placeholder="Email" required>
 			<input type="password" name="password" placeholder="Mot de passe" required>
