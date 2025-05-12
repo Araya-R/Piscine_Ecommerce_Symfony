@@ -48,15 +48,13 @@ class AdminUserController extends AbstractController
             return $this->redirectToRoute('admin-create-user');
 
             // 2eme méthode:
+            //Créer la fonction dans l'entity User
             // public function createAdmin($email, $passwordHashed) {
             //     $this->email = $email;
             //     $this->password = $passwordHashed;
             //     $this->roles = ['ROLE_ADMIN'];
             // }
             // $user->createAdmin($email, $passwordHashed);
-
-
-
         }
         //si le formulaire n'a pas été soumis, on affiche le formulaire
         return $this->render('/admin/user/create-user.html.twig');
