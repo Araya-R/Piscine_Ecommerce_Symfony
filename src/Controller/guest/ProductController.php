@@ -18,7 +18,13 @@ class ProductController extends AbstractController{
 
     #[Route("/detail-product/{id}", name:"detail-product")]
     public function DisplayProduct($id, ProductRepository $productRepository){
+
         $product=$productRepository->findOneById($id);
+
+        if(!$product){
+            $this->addFlash('error', 'Produit introuvable');
+            return $this->redirectToRoute('404');
+        }
         return $this->render('guest/product/detail-product.html.twig', ['product'=>$product]);
     }
 }

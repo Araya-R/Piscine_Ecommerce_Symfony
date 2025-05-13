@@ -14,4 +14,9 @@ class PageController extends AbstractController
     {
         return $this->render('guest/home.html.twig');
     }
+    #[Route("/404", name: "404")]
+    public function DisplayPage404()
+    {
+        return $this->render('guest/404.html.twig');
+    }
 }

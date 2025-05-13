@@ -1,0 +1,10 @@
+{% extends "guest/base.html.twig"%}
+
+{% block title %}Erreur 404 - Page non trouvée{% endblock %}
+{% block main %}
+<div class="container">
+    <h1>Erreur 404 - Page non trouvée</h1>
+    <p>Désolé, la page que vous recherchez n'existe pas.</p>
+    <p><a href="{{ path('home') }}">Retour à la page d'accueil</a></p>
+{% endblock %}
+

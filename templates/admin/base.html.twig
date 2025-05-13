@@ -15,7 +15,8 @@
 					<li><a href="{{ path ('admin-list-products') }}">Liste des produits</a></li>
 
 					<li><a href="{{ path ('admin-create-product') }}">Créer des produits</a></li>
-
+					<li><a href="{{ path ('admin-create-user') }}">Créer un admin</a></li>
+					<li><a href="{{ path ('admin-display-users') }}">Lists des admins</a></li>
 					<li><a href="{{path('logout')}}">Se déconnecter</a></li>
 				</ul>
 			</nav>
@@ -31,12 +32,14 @@
 		</header>
 
 
+		{# Affichage des messages d'erreur #}
 		{% for message in app.flashes('error') %}
 			<div class="alert alert-danger">{{ message }}</div>
 		{% endfor %}
 
+		{# Affichage des messages de succès #}
 		{% for message in app.flashes('success') %}
-			<div class="alert alert-danger">{{ message }}</div>
+			<div class="alert alert-success">{{ message }}</div>
 		{% endfor %}
 
 		{% block main %}{% endblock %}

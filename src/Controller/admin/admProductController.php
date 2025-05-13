@@ -51,12 +51,20 @@ class AdmProductController extends AbstractController
     public function DeleteProduct($id, ProductRepository $productRepository, EntityManagerInterface $entityManager)
     {
 
+       try{
         $product = $productRepository->findOneById($id);
 
-        $entityManager->remove($product);
+        if (!$product) {
+            return  $this->render('admin/404.html.twig', ['message' => "Produit avec l'ID $id introuvable."]);
+        }
+
+         $entityManager->remove($product);
         $entityManager->flush();
 
         $this->addFlash('success', 'Produit supprimé');
+       }catch (\Exception $e) {
+            $this->addFlash('error', 'Une erreur est survenue lors de la suppression du produit: ' . $e->getMessage());
+        }
         return $this->redirectToRoute('admin-list-products');
     }
 

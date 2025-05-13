@@ -19,6 +19,10 @@ class CategoryController extends AbstractController{
     #[Route("/detail-category/{id}", name:"detail-category")]
     public function DisplayCategory($id, CategoryRepository $categoryRepository){
         $category=$categoryRepository->findOneById($id);
+        if(!$category){
+            $this->addFlash('error', 'Catégorie introuvable');
+            return $this->redirectToRoute('404');
+        }
         return $this->render('guest/category/detail-category.html.twig', ['category'=>$category]);
     }
 }
