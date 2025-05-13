@@ -20,6 +20,10 @@ class ProductRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('product')
             ->where('product.title LIKE :search')
+
+            //setParameter () garantit que la donnée insérée dans la requête est sécurisée
+            //éviter les attaques de type injection SQL 
+            // possibilité qu'un utilisateur malveillant entre une requête SQL dans le champ de recherche
             ->setParameter('search', '%' . $search . '%')
             ->getQuery()
             ->getResult();

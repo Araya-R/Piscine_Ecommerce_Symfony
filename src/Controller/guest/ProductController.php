@@ -45,6 +45,7 @@ class ProductController extends AbstractController
             $this->addFlash('error', 'Aucun produit trouvé');
             return $this->redirectToRoute('404');
         }
+        
         return $this->render('guest/product/search-results.html.twig', ['productsfound' => $productsfound, 'search' => $search]);
     }
 }
