@@ -5,7 +5,7 @@
 
 {% block main %}
 
-	{% for product in productsfound %}
+	{% for productsfound in productsfound %}
 		<li>
 			<a href="{{path('detail-product', {'id' : productsfound.id })}}">{{productsfound.title}}</a>
 		</li>
