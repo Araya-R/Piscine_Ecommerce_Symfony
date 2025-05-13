@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\DBAL\Types\DecimalType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
@@ -37,7 +38,7 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-    public function __construct($title,$description,$price,$isPublished,$category){
+    public function __construct(string $title,string $description,float $price,bool $isPublished,Category $category){
 
         if (strlen($title) < 3 || strlen($title) > 100){
             throw new Exception("Le titre doit contenir entre 3 et 100 caractères");
@@ -53,7 +54,7 @@ class Product
         $this->isPublished = $isPublished;
     }
 
-    public function update($title,$description,$price,$isPublished,$category){
+    public function update(string $title,string $description,float $price,bool $isPublished,Category $category){
         if (strlen($title) < 3 || strlen($title) > 100){
             throw new Exception("Le titre doit contenir entre 3 et 100 caractères");
         }

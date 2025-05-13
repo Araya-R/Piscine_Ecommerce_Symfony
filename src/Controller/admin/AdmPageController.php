@@ -9,8 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 class AdmPageController extends AbstractController
 {
 
-    #[Route("admin", name: "admin-home")]
-    public function DisplayAdminHome()
+    #[Route("admin", name: "admin-home", methods: ["GET"])]
+    public function DisplayAdminHome(): Response
     {
         return $this->render('admin/home.html.twig');
     }

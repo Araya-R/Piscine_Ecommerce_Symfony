@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdmProductController extends AbstractController
 {
 
-    #[Route('/admin/create-product', name: "admin-create-product")]
+    #[Route('/admin/create-product', name: "admin-create-product", methods: ['GET', 'POST'])]
     public function CreateProduct(Request $request, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager)
     {
 
@@ -39,7 +39,7 @@ class AdmProductController extends AbstractController
         return $this->render('admin/product/admCreateProduct.html.twig', ['categories' => $categories]);
     }
 
-    #[Route('/admin/list-products', name: "admin-list-products")]
+    #[Route('/admin/list-products', name: "admin-list-products", methods: ['GET'])]
     public function DisplayProducts(ProductRepository $productRepository)
     {
 
@@ -47,8 +47,8 @@ class AdmProductController extends AbstractController
         return $this->render('admin/product/list-products.html.twig', ['products' => $products]);
     }
 
-    #[Route('/admin/delete-product/{id}', name: "admin-delete-product")]
-    public function DeleteProduct($id, ProductRepository $productRepository, EntityManagerInterface $entityManager)
+    #[Route('/admin/delete-product/{id}', name: "admin-delete-product", methods: ['GET'])]
+    public function DeleteProduct(int $id, ProductRepository $productRepository, EntityManagerInterface $entityManager)
     {
 
        try{
@@ -68,8 +68,8 @@ class AdmProductController extends AbstractController
         return $this->redirectToRoute('admin-list-products');
     }
 
-    #[Route('/admin/update-product/{id}', name: "admin-update-product")]
-    public function UpdateProduct($id, ProductRepository $productRepository, EntityManagerInterface $entityManager, CategoryRepository $categoryRepository, Request $request)
+    #[Route('/admin/update-product/{id}', name: "admin-update-product", methods: ['GET', 'POST'])]
+    public function UpdateProduct(int $id, ProductRepository $productRepository, EntityManagerInterface $entityManager, CategoryRepository $categoryRepository, Request $request)
     {
 
         $product = $productRepository->find($id);

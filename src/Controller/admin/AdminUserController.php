@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminUserController extends AbstractController
 {
-    #[Route('/admin/create-user', name: 'admin-create-user')]
+    #[Route('/admin/create-user', name: 'admin-create-user', methods: ['GET', 'POST'])]
     public function CreateAdmin(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager,userRepository $userRepository): Response{
 
         //si le formulaire a été soumis en POST
@@ -80,7 +80,7 @@ class AdminUserController extends AbstractController
         return $this->render('/admin/user/create-user.html.twig',['users'=>$users]);
     }
 
-    #[Route('/admin/display-users', name: 'admin-display-users')]
+    #[Route('/admin/display-users', name: 'admin-display-users', methods: ['GET'])]
     public function DisplayAdmin(UserRepository $userRepository): Response{
 
         $users= $userRepository->findAll();
