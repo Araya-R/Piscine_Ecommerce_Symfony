@@ -1,0 +1,14 @@
+{% extends "guest/base.html.twig"%}
+
+{% block title %}Résultat de recherche "{{search}}"
+{% endblock %}
+
+{% block main %}
+
+	{% for productsfound in productsfound %}
+		<li>
+			{{productsfound.title}}
+		</li>
+
+	{% endfor %}
+{% endblock main %}
